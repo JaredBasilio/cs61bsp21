@@ -1,0 +1,89 @@
+# Branching test, switching between main and a new branch.
+I definitions.inc
+> init
+<<<
++ cat.txt cat.txt
++ dog.txt dog.txt
+> branch empty
+<<<
+> status
+=== Branches ===
+empty
+\*master
+
+=== Staged Files ===
+
+=== Removed Files ===
+
+=== Modifications Not Staged For Commit ===
+
+=== Untracked Files ===
+${ARBLINES}
+
+<<<*
+> add cat.txt
+<<<
+> add dog.txt
+<<<
+> commit "added cat and dog"
+<<<
+> checkout empty
+<<<
+* cat.txt
+* dog.txt
+> status
+=== Branches ===
+\*empty
+master
+
+=== Staged Files ===
+
+=== Removed Files ===
+
+=== Modifications Not Staged For Commit ===
+
+=== Untracked Files ===
+${ARBLINES}
+
+<<<*
+> checkout master
+<<<
+E cat.txt
+E dog.txt
++ wug.txt wug.txt
+> branch catAndDog
+<<<
+> add wug.txt
+<<<
+> rm dog.txt
+<<<
+> rm cat.txt
+<<<
+* cat.txt
+* dog.txt
+> commit "added wug, removed cat and dog"
+<<<
+E wug.txt
+> checkout catAndDog
+<<<
+E cat.txt
+E dog.txt
+* wug.txt
+> checkout master
+<<<
+* cat.txt
+* dog.txt
+E wug.txt
++ notwug.txt notwug.txt
+> add notwug.txt
+<<<
++ cat.txt cat.txt
+> add cat.txt
+<<<
+> commit "added cat and notwug to main"
+<<< 
+> checkout catAndDog
+<<<
+* notwug.txt
+E cat.txt
+E dog.txt

@@ -1,0 +1,76 @@
+# Branching test, switching between two new branches.
+I definitions.inc
+> init
+<<<
++ cat.txt cat.txt
++ dog.txt dog.txt
+> branch empty
+<<<
+> add cat.txt
+<<<
+> add dog.txt
+<<<
+> commit "added dog and cat"
+<<<
+> branch dogAndCat
+<<<
++ wug.txt wug.txt
++ notwug.txt notwug.txt
+> add wug.txt
+<<<
+> add notwug.txt
+<<<
+> rm dog.txt
+<<<
+> rm cat.txt
+<<<
+* dog.txt
+* cat.txt
+> commit "added wug and notwug, deleted dog and cat"
+<<<
+> branch wugAndnotWug
+<<<
+> checkout dogAndCat
+<<<
+E cat.txt
+E dog.txt
+* wug.txt
+* notwug.txt
+> checkout wugAndnotWug
+<<<
+* cat.txt
+* dog.txt
+E wug.txt
+E notwug.txt
++ coconut.txt coconut.txt
+> add coconut.txt
+<<< 
+> commit "added coconut.txt"
+<<<
+> checkout dogAndCat
+<<<
+E cat.txt
+E dog.txt
+* wug.txt
+* notwug.txt
+* coconut.txt
++ vanilla.txt vanilla.txt
+> checkout wugAndnotWug
+<<<
+E vanilla.txt
+* cat.txt
+* dog.txt
+E notwug.txt
+E wug.txt
+> add vanilla.txt
+<<<
+> commit "added vanilla"
+<<<
+> checkout master
+<<<
+E wug.txt
+E notwug.txt
+* cat.txt
+* dog.txt
+* vanilla.txt
+* coconut.txt

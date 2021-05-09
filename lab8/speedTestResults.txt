@@ -1,0 +1,46 @@
+BucketsSpeedTest:
+L = 100, # of Strings = 100
+    class hashmap.MyHashMapALBuckets: 0.01 sec
+    class hashmap.MyHashMapLLBuckets: 0.00 sec
+    class hashmap.MyHashMapTSBuckets: 0.00 sec
+    class hashmap.MyHashMapHSBuckets: 0.00 sec
+    class hashmap.MyHashMapPQBuckets: 0.00 sec
+L = 100, # of Strings = 1000
+    class hashmap.MyHashMapALBuckets: 0.00 sec
+    class hashmap.MyHashMapLLBuckets: 0.00 sec
+    class hashmap.MyHashMapTSBuckets: 0.00 sec
+    class hashmap.MyHashMapHSBuckets: 0.00 sec
+    class hashmap.MyHashMapPQBuckets: 0.00 sec
+L = 100, # of Strings = 10000
+    class hashmap.MyHashMapALBuckets: 0.02 sec
+    class hashmap.MyHashMapLLBuckets: 0.02 sec
+    class hashmap.MyHashMapTSBuckets: 0.01 sec
+    class hashmap.MyHashMapHSBuckets: 0.01 sec
+    class hashmap.MyHashMapPQBuckets: 0.01 sec
+
+InsertInOrderSpeedTest:
+# strings: 100
+    class hashmap.ULLMap: 0.01 sec
+# of strings: 10000
+    class hashmap.MyHashMap: 0.01 sec
+# of strings: 100000
+
+What would you like L to be?: 10000
+
+Enter # strings to insert into each map: 10000
+    class hashmap.MyHashMapALBuckets: 0.64 sec
+    class hashmap.MyHashMapLLBuckets: 0.61 sec
+    class hashmap.MyHashMapTSBuckets: 0.60 sec
+    class hashmap.MyHashMapHSBuckets: 0.59 sec
+    class hashmap.MyHashMapPQBuckets: 0.61 sec
+
+What would you like L to be?: 10000
+
+Enter # strings to insert into hashmap.ULLMap: 10000
+class hashmap.ULLMap: 1.03 sec
+
+Enter # strings to insert into your hashmap.MyHashMap: 10000
+class hashmap.MyHashMap: 0.61 sec
+
+Enter # strings to insert into Java's HashMap: 10000
+Java's Built-in HashMap: 0.59 sec

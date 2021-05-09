@@ -1,0 +1,109 @@
+# Extra-credit tests for remote fetch and push
+# Fetch from remote
+# Set up first repository with one commit + initial
+C D1
+I setup2.inc
+> log
+===
+${COMMIT_HEAD}
+Two files
+
+===
+${COMMIT_HEAD}
+initial commit
+
+<<<*
+D R1_TWO "${1}"
+D R1_INIT "${2}"
+
+# Set up second repository with one commit + init.
+
+C D2
+> init
+<<<
++ k.txt wug2.txt
+> add k.txt
+<<<
+> commit "Add k in repo 2"
+<<<
+> log
+===
+${COMMIT_HEAD}
+Add k in repo 2
+
+===
+${COMMIT_HEAD}
+initial commit
+
+<<<*
+D R2_K "${1}"
+D R2_INIT "${2}"
+
+# Fetch remote master and reset our master to it.
+# Then add another commit and push.
+> add-remote R1 ../D1/.gitlet
+<<<
+46. > fetch R1 master
+47. <<<
+48. > checkout R1/master
+49. <<<
+50. > log
+51. ===
+52. commit ${R1_TWO}
+53. ${DATE}
+54. Two files
+55.
+56. ===
+57. commit ${R1_INIT}
+58. ${DATE}
+59. initial commit
+60.
+61. <<<*
+62. > checkout master
+63. <<<
+64. > reset ${R1_TWO}
+65. <<<
+66. + h.txt wug3.txt
+67. > add h.txt
+68. <<<
+69. > commit "Add h"
+70. <<<
+71. > log
+72. ===
+73. ${COMMIT_HEAD}
+74. Add h
+75.
+76. ===
+77. commit ${R1_TWO}
+78. ${DATE}
+79. Two files
+80.
+81. ===
+82. commit ${R1_INIT}
+83. ${DATE}
+84. initial commit
+85.
+<<<*
+D R2_H "${1}"
+> push R1 master
+<<<
+
+# Check that we have received the pushed branch
+C D1
+> log
+===
+commit ${R2_H}
+${DATE}
+Add h
+
+===
+commit ${R1_TWO}
+${DATE}
+Two files
+
+===
+commit ${R1_INIT}
+${DATE}
+initial commit
+
+<<<*
